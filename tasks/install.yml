@@ -13,6 +13,7 @@
   args:
     creates: "{{ prometheus_install_dir + '/prometheus-' + prometheus_version + '.linux-amd64/prometheus' }}"
   become: true
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: install | Creating Symlink For Prometheus ({{ prometheus_install_dir + '/prometheus' }})
   file:
@@ -20,3 +21,4 @@
     dest: "{{ prometheus_install_dir + '/prometheus' }}"
     state: link
   become: true
+  ignore_errors: "{{ ansible_check_mode }}"

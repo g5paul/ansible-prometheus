@@ -16,6 +16,7 @@
     group: "{{ prometheus_user_info['group'] }}"
     recurse: true
   become: true
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: config | Ensuring {{ prometheus_local_storage }} Exists
   file:
